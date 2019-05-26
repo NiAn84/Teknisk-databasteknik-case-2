@@ -11,17 +11,19 @@ html
         .col-xs-4
           img.logo(src='/images/icon.png')
         .col-xs-4
-          .title Social Network
+          .title Bjarnes shopza
       .row
         .col-xs-4
           .menu-box
-            a.menu(href="/") Home
-            a.menu(href="/users") List Users
-            a.menu(href="/users/add") Add User
+            a.menu(href="/") Search
+            a.menu(href="/carparts") List Carparts
             if userid
               a.menu(href="/dashboard") Dashboard
+              a.menu(href="/users") List Customers
+              a.menu(href="carparts/add") Add Carpart
               a.menu(href="/logout") Logout
             else
+              a.menu(href="/users/add") New Customer
               a.menu(href="/login") Login
 
     block content

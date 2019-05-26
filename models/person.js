@@ -9,10 +9,16 @@ const PersonSchema = new Schema({
     email: String,
     username: String,
     password: String,
-    birthyear: Number,
     avatar: String,
-    friends: [String]
-}, { collection: 'persons' });
+    car: {
+        manufacturer: String,
+        model: String,
+        year: Number,
+        color: String,
+        engine: String
+    }}, 
+    { collection: 'persons' }
+);
 
 // Create model
 const Person = mongoose.model('person', PersonSchema);

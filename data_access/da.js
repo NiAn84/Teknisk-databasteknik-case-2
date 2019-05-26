@@ -1,10 +1,11 @@
 const Person = require('../models/person');
+const Carpart = require('../models/carpart');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 
 function connect2db() {
-    mongoose.connect('mongodb://localhost:27017/social_network',
+    mongoose.connect('mongodb://localhost:27017/shopza',
         { useNewUrlParser: true });
 
     mongoose.connection.once('open', function () {
@@ -26,6 +27,17 @@ function savePerson(p, cb) {
             cb(err);
         });
     });
+}
+
+function saveCarpart(p, cb) {
+    connect2db();
+    var p1 = new Carpart(p);
+    p1.save(function(err){
+        if(err) {
+            console.log("Error creating Carpart" + err)
+        }
+        cb(err);
+        });
 }
 
 
@@ -50,6 +62,16 @@ function deleteUser(id, cb) {
     });
 }
 
+function deleteCarpart(id, cb) {
+    connect2db();
+    Carpart.deleteOne({"_id": id}, function (err, res) {
+       if(err) {
+           console.log("Error deleting carpart" + err);
+       }
+       cb(err);
+    });
+}
+
 function getAllPersons(cb) {
     connect2db();
     Person.find(function(err, users) {
@@ -61,22 +83,13 @@ function getAllPersons(cb) {
 }
 
 
-function getFriendsOfUser(user, cb) {
+function getAllCarparts(cb) {
     connect2db();
-    var friends_ids = user.friends;
-    if(friends_ids.length === 0) {
-        cb([]);
-    }
-    var friends = [];
-    var count = 0;
-    friends_ids.forEach(function(id){
-        Person.findOne({'_id': id}, function(err, friend){
-            friends.push(friend);
-            count++;
-            if(count === friends_ids.length){
-                cb(friends);
-            }
-        });
+    Carpart.find(function(err, carparts) {
+        if(err) {
+            console.log('Error getting carparts' + err);
+        }
+        cb(err, carparts);
     });
 }
 
@@ -87,20 +100,17 @@ function getPersonByUsername(username, cb) {
     });
 }
 
-function addFriend(userid1, userid2, cb) {
+function getPersonById(userid, cb) {
     connect2db();
-    Person.findOneAndUpdate({'_id': userid1}, {$push: {'friends': userid2}}, upsert=false, function(err){
-        Person.findOneAndUpdate({'_id': userid2}, {$push: {'friends': userid1}}, upsert=false, function(err){
-            cb(err);
-        });
+    Person.findOne({'_id': userid}, function(err, user, carpart){
+        cb(err, user, carpart);
     });
 }
 
-
-function getPersonById(userid, cb) {
+function getCarpartById(cb) {
     connect2db();
-    Person.findOne({'_id': userid}, function(err, user){
-        cb(err, user);
+    Carpart.findOne(function(err, carpart){
+        cb(err, carpart);
     });
 }
 
@@ -109,11 +119,13 @@ function getPersonById(userid, cb) {
 
 module.exports = {
     savePersonFromForm: savePerson,
+    saveCarpartFromForm: saveCarpart,
     findPersons: getAllPersons,
+    findCarparts: getAllCarparts,
     search: search,
     deleteUser: deleteUser,
+    deleteCarpart: deleteCarpart,
     getUserByUsername: getPersonByUsername,
     getUserById: getPersonById,
-    addFriend: addFriend,
-    getFriendsOfUser: getFriendsOfUser,
+    getCarpartById: getCarpartById
 };

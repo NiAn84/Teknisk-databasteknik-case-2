@@ -10,6 +10,7 @@ const favicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const carpartsRouter = require('./routes/carparts')
 const luckyRouter = require('./routes/lucky');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
@@ -19,7 +20,7 @@ const dashboardRouter = require('./routes/dashboard');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/social_network',{
+mongoose.connect('mongodb://localhost/shopza',{
   useNewUrlParser: true
 });
 
@@ -56,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/carparts', carpartsRouter);
 app.use('/lucky', luckyRouter);
 app.use('/search', searchRouter);
 app.use('/login', loginRouter);

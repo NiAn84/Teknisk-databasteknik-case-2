@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+    h1 Add Carpart
+    form.user_input(action='/carparts', method='post')
+        label(for='name')
+            span Part name
+            input(type='text', name='name', id='name', required='true')
+        label(for='description')
+            span Description
+            input(type='text', name='description', id='description', required='true')
+        label(for='details.manufacturer')
+            span Manufacturer
+            br
+            select.dropdown_window(type="text", name="details.manufacturer", id="details.manufacturer", required="true")
+                option UAZ
+                option Moskvich Logo
+                option Volga
+        label(for='details.supplier')
+            span Supplier
+            br
+            select.dropdown_window(type="text", name="details.supplier", id="details.supplier", required="true")
+                option Nikita
+                option Alexey
+                option Vladimir
+        label(for='details.fits')
+            span Fits carmodel
+            br
+            select.dropdown_window(type="text", name="details.fits", id="details.fits", required="true")
+                option One
+                option Two
+                option Three
+
+        label.control-label(for='submit')
+            span
+            input(type='submit', id='submit', value='Save')

@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    h1 Add User
+    h1 New Customer
     form.user_input(action='/users', method='post')
         label(for='first_name')
             span First Name
@@ -18,9 +18,46 @@ block content
         label(for='password')
             span Password
             input(type='password', name='password', id='password', required='true')
-        label(for='birthyear')
-            span Year of Birth
-            input(type='text', name='birthyear', id='birthyear', required='true')
+        label(for='car.manufacturer')
+            span Car Manufacturer
+            br
+            select.dropdown_window(type="text", name="car.manufacturer", id="car.manufacturer", required="true")
+                option UAZ
+                option Moskvich Logo
+                option Volga
+        label(for='car.model')
+            span Model
+            br
+            select.dropdown_window(type="text", name="car.model", id="car.model", required="true")
+                option One
+                option Two
+                option Three
+        label(for='car.year')
+            span Year
+            br
+            select.dropdown_window(type="number", name="car.year", id="car.year", required="true")
+                option 2004
+                option 2005
+                option 2006
+        label(for='car.color')
+            span Color
+            br
+            select.dropdown_window(type="text", name="car.color", id="car.color", required="true")
+                option Blue
+                option Black
+                option White
+                option Purple
+                option Brown
+                option Grey
+        label(for='car.engine')
+            span Engine
+            br
+            select.dropdown_window(type="text", name="car.engine", id="car.engine", required="true")
+                option Gasoline
+                option Diesel
+                option Electric
+                option Jet Fuel
+        
         label(for='avatar')
             span(id='avatar') Avatar
             br

@@ -8,9 +8,8 @@ block content
             th Last Name
             th Email
             th Username
-            th Year of Birth
-            if userid
-                th Add as Friend
+            th Car
+            th Car details (Year, Color, Engine)
             th Delete
         if user_list && user_list.length > 0
             each user in user_list
@@ -19,21 +18,8 @@ block content
                     td #{user.last_name}
                     td #{user.email}
                     td #{user.username}
-                    td #{user.birthyear}
-                    if userid
-                        - var not_found = true
-                        td.center
-                            if userid === user.id
-                                b You
-                                - not_found = false
-                            else
-                                each friend in friends
-                                    if friend == user.id
-                                        b Friend
-                                        - not_found = false
-                                if not_found
-                                    a(href="/users/add_friend?id=#{user.id}")
-                                        b Add
+                    td #{user.car.manufacturer} - #{user.car.model}
+                    td #{user.car.year}, #{user.car.color}, #{user.car.engine}
                     td.center
                         a(href="/users/delete?id=#{user.id}")
                             img.icon(src="/images/delete.png")

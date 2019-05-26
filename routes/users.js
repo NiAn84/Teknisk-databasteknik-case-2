@@ -9,11 +9,11 @@ router.get('/', function(req, res, next) {
     var userid = req.session['userid'];
     if(userid){
       da.getUserById(userid, function(err, user){
-        res.render('users/users', {title:'User listing', user_list: users, userid: userid, friends: user.friends});
+        res.render('users/users', {title:'Customer listing', user_list: users, userid: userid });
       });
     }
     else {
-      res.render('users/users', {title:'User listing', user_list: users, userid: userid, friends: []});
+      res.render('users/users', {title:'Customer listing', user_list: users, userid: userid});
     }
 
   });
@@ -27,7 +27,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/add', function(req, res){
   var userid = req.session['userid'];
-  res.render('users/add', {title: 'Add User', userid: userid});
+  res.render('users/add', {title: 'New Customer', userid: userid});
 });
 
 router.get('/delete', function(req, res){
@@ -36,10 +36,5 @@ router.get('/delete', function(req, res){
   });
 });
 
-router.get('/add_friend', function(req, res){
-  da.addFriend(req.session['userid'], req.query.id, function(err){
-    res.redirect('/users');
-  });
-});
 
 module.exports = router;

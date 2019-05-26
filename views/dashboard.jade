@@ -8,16 +8,10 @@ block content
         p Last Name: #{user.last_name}
         p Email: #{user.email}
         p Username: #{user.username}
-        p Year of Birth: #{user.birthyear}
-
-    p Friends
-    table.user_table
-        tr
-            th Image
-            th Name
-        each friend in friends
-            tr
-                td
-                    img.avatar-icon(src="/images/avatars/#{friend.avatar}")
-                td
-                    p #{friend.first_name} #{friend.last_name}
+        br
+        p Your car:
+        p Manufacturer: #{user.car.manufacturer}
+        p Model: #{user.car.model}
+        p Year: #{user.car.year}
+        p Color: #{user.car.color}
+        p Engine: #{user.car.engine}
