@@ -4,20 +4,22 @@ block content
   h1 Welcome to #{title}
   if userid
     form.user_input(action='/search', method='post')
-      label(for='search_cust')
-        span Customer name search
-        input(type='text', name='search_cust', id='search_cust')
-      label.control-label(for='submit_cust')
+      label(for='search')
+        span Customer Search
+        input(type='text', name='search', id='search')
+      label.control-label(for='submit')
         span
-        input(type='submit', id='submit_cust', value='Search')
+        input(type='submit', id='submit', value='Search')
+    </div>
     br
-    form.user_input(action='/search', method='post')
-      label(for='search_carpart')
-        span Carpart search
-        input(type='text', name='search_carpart', id='search_carpart')
-      label.control-label(for='submit_carpart')
+    form.user_input(action='/search/carpart', method='post')
+      label(for='search')
+        span Carpart Search
+        input(type='text', name='search', id='search')
+      label.control-label(for='submit')
         span
-        input(type='submit', id='submit_carpart', value='Search')
+        input(type='submit', id='submit', value='Search')
+    </div>
   else
     br
     h2 Login to be able to search

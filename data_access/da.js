@@ -52,6 +52,16 @@ function search(pattern, cb) {
     });
 }
 
+function searchpart(pattern, cb) {
+    connect2db();
+    Carpart.find({$or: [
+                        {name: {$regex: pattern }}
+                      ]
+    }, function(err, carparts){
+        cb(err, carparts);
+    });
+}
+
 function deleteUser(id, cb) {
     connect2db();
     Person.deleteOne({"_id": id}, function (err, res) {
@@ -109,7 +119,7 @@ function getPersonById(userid, cb) {
 
 function getCarpartById(cb) {
     connect2db();
-    Carpart.findOne(function(err, carpart){
+    Carpart.findOne( function(err, carpart){
         cb(err, carpart);
     });
 }
@@ -123,6 +133,7 @@ module.exports = {
     findPersons: getAllPersons,
     findCarparts: getAllCarparts,
     search: search,
+    searchpart: searchpart,
     deleteUser: deleteUser,
     deleteCarpart: deleteCarpart,
     getUserByUsername: getPersonByUsername,
