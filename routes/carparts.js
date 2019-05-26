@@ -4,18 +4,10 @@ var da = require('../data_access/da');
 
 
 /* GET carparts listing. */
-router.get('/', function(req, res, next) {
-  da.findCarparts(function(err, carparts) {
+router.get('/', function(req, res, next){
+  da.findCarparts(function(err, carparts){
     var userid = req.session['userid'];
-    if(userid){
-      da.getUserById(userid, function(err, user){
-        res.render('carparts/carparts', {title:'Carparts listing', carpart_list: carparts, userid: userid });
-      });
-    }
-    else {
-      res.render('carparts/carparts', {title:'Carparts listing', carpart_list: carparts, userid: userid});
-    }
-
+    res.render('carparts/carparts', {title:'Carparts listing', carpart_list: carparts, userid: userid});
   });
 });
 

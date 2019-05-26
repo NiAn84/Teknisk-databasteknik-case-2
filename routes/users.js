@@ -7,15 +7,7 @@ var da = require('../data_access/da');
 router.get('/', function(req, res, next) {
   da.findPersons(function(err, users) {
     var userid = req.session['userid'];
-    if(userid){
-      da.getUserById(userid, function(err, user){
-        res.render('users/users', {title:'Customer listing', user_list: users, userid: userid });
-      });
-    }
-    else {
-      res.render('users/users', {title:'Customer listing', user_list: users, userid: userid});
-    }
-
+    res.render('users/users', {title:'Customer listing', user_list: users, userid: userid });
   });
 });
 

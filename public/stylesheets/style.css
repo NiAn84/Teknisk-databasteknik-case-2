@@ -46,7 +46,7 @@ a {
 
 /* Menu Buttons */
 .menu {
-  background: #495C70;
+  background: rgb(100, 73, 112);
   color: #dae5f4;
   font-family: "Arial Black";
   font-size: 24px;
@@ -56,7 +56,7 @@ a {
   padding-left: 8px;
   padding-bottom: 8px;
   margin: 15px;
-  box-shadow: #394D61 4px 4px 10px;
+  box-shadow: rgb(86, 57, 97) 4px 4px 10px;
 }
 
 .menu:hover {

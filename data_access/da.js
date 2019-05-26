@@ -55,7 +55,8 @@ function search(pattern, cb) {
 function searchpart(pattern, cb) {
     connect2db();
     Carpart.find({$or: [
-                        {name: {$regex: pattern }}
+                        {name: {$regex: pattern }},
+                        {description:{$regex: pattern }}
                       ]
     }, function(err, carparts){
         cb(err, carparts);
@@ -110,22 +111,12 @@ function getPersonByUsername(username, cb) {
     });
 }
 
-function getPersonById(userid, cb) {
+function getUserById(userid, cb) {
     connect2db();
-    Person.findOne({'_id': userid}, function(err, user, carpart){
-        cb(err, user, carpart);
+    Person.findOne({'_id': userid}, function(err, user){
+        cb(err, user);
     });
 }
-
-function getCarpartById(cb) {
-    connect2db();
-    Carpart.findOne( function(err, carpart){
-        cb(err, carpart);
-    });
-}
-
-
-
 
 module.exports = {
     savePersonFromForm: savePerson,
@@ -137,6 +128,5 @@ module.exports = {
     deleteUser: deleteUser,
     deleteCarpart: deleteCarpart,
     getUserByUsername: getPersonByUsername,
-    getUserById: getPersonById,
-    getCarpartById: getCarpartById
+    getUserById: getUserById
 };
