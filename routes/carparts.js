@@ -7,7 +7,11 @@ var da = require('../data_access/da');
 router.get('/', function(req, res, next){
   da.findCarparts(function(err, carparts){
     var userid = req.session['userid'];
-    res.render('carparts/carparts', {title:'Carparts listing', carpart_list: carparts, userid: userid});
+    const n = Math.floor(Math.random() * 100 + 1);
+    if(userid)
+      res.render('carparts/carparts', {title:'Carparts listing', carpart_list: carparts, userid: userid});
+    else
+      res.render('lucky', {title: 'Lucky number', number: n});
   });
 });
 
@@ -19,7 +23,11 @@ router.post('/', function(req, res, next) {
 
 router.get('/add', function(req, res){
   var userid = req.session['userid'];
-  res.render('carparts/add', {title: 'Add Carpart', userid: userid});
+  const n = Math.floor(Math.random() * 100 + 1);
+  if(userid)
+    res.render('carparts/add', {title: 'Add Carpart', userid: userid});
+  else
+    res.render('lucky', {title: 'Lucky number', number: n});
 });
 
 router.get('/delete', function(req, res){

@@ -7,7 +7,11 @@ var da = require('../data_access/da');
 router.get('/', function(req, res, next) {
   da.findPersons(function(err, users) {
     var userid = req.session['userid'];
-    res.render('users/users', {title:'Customer listing', user_list: users, userid: userid });
+    const n = Math.floor(Math.random() * 100 + 1);
+    if(userid)
+      res.render('users/users', {title:'Customer listing', user_list: users, userid: userid });
+    else
+      res.render('lucky', {title: 'Lucky number', number: n});
   });
 });
 
