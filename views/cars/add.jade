@@ -6,7 +6,7 @@ block content
         label(for='manufacturer')
             span Manufacturer
             br
-            select.dropdown_window(type="text", name="manufacturer", id="manufacturer", required="true")
+            select.input_box(type="text", name="manufacturer", id="manufacturer", required="true")
                 option UAZ
                 option Moskvich Logo
                 option Volga
@@ -17,11 +17,11 @@ block content
         label(for='details.year')
             span Year
             br
-            input(type='number', name='details.year', id='details.year', required='true', value='1975')
+            input.input_boxv(type='number', name='details.year', id='details.year', required='true', value='1975')
         label(for='details.engine')
             span Manufacturer
             br
-            select.dropdown_window(type="text", name="details.engine", id="details.engine", required="true")
+            select.input_box(type="text", name="details.engine", id="details.engine", required="true")
                 option Gasoline
                 option Diesel
                 option Electric

@@ -190,3 +190,7 @@ a {
 .user_input input[type=button]:hover{
   background: #394D61;
 }
+
+.input_box{
+  box-shadow: rgb(86, 57, 97) 4px 4px 10px;
+}

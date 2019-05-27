@@ -24,13 +24,13 @@ block content
         label(for="car.car")
             span Car Model
             br
-            select.dropdown_window(type="text", name="car.car", id="car.car", required="true")
+            select.input_box(type="text", name="car.car", id="car.car", required="true")
                 each car in car_list
                     option #{car.manufacturer} #{car.model} - #{car.details.year} - #{car.details.engine}
         label(for='car.color')
             span Color
             br
-            select.dropdown_window(type="text", name="car.color", id="car.color", required="true")
+            select.input_box(type="text", name="car.color", id="car.color", required="true")
                 option Blue
                 option Black
                 option White

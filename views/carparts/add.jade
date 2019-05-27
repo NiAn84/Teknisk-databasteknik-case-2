@@ -12,31 +12,31 @@ block content
         label(for='details.manufacturer')
             span Manufacturer
             br
-            select.dropdown_window(type="text", name="details.manufacturer", id="details.manufacturer", required="true")
+            select.input_box(type="text", name="details.manufacturer", id="details.manufacturer", required="true")
                 option UAZ
                 option Moskvich Logo
                 option Volga
         label(for='details.supplier')
             span Supplier
             br
-            select.dropdown_window(type="text", name="details.supplier", id="details.supplier", required="true")
+            select.input_box(type="text", name="details.supplier", id="details.supplier", required="true")
                 option Nikita
                 option Alexey
                 option Vladimir
         label(for="details.fits")
             span Fits Car Model
             br
-            select.dropdown_window(type="text", name="details.fits", id="details.fits", required="true")
+            select.input_box(type="text", name="details.fits", id="details.fits", required="true")
                 each car in car_list
                     option #{car.manufacturer} #{car.model} - #{car.details.year} - #{car.details.engine}
         label(for='details.inprice')
             span In Price
             br
-            input(type='number', name='details.inprice', id='details.inprice', required='true', value='75')
+            input.input_box(type='number', name='details.inprice', id='details.inprice', required='true', value='75')
         label(for='details.outprice')
             span In Price
             br
-            input(type='number', name='details.outprice', id='details.outprice', required='true', value='750')
+            input.input_box(type='number', name='details.outprice', id='details.outprice', required='true', value='750')
 
         label.control-label(for='submit')
             span

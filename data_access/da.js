@@ -76,6 +76,14 @@ function getUserById(userid, cb) {
         cb(err, user);
     });
 }
+
+function updateEmailOnUser(userid, email, cb) {
+    connect2db();
+    Person.updateOne({'_id': userid}, {$set: {'email': email}}, function(err){ 
+    cb(err)
+});
+}
+
 // Carpart --------------------------------------------
 
 function saveCarpart(p, cb) {
@@ -173,6 +181,7 @@ module.exports = {
     deleteUser: deleteUser,
     getUserByUsername: getPersonByUsername,
     getUserById: getUserById,
+    updateEmailOnUser: updateEmailOnUser,
     // Carpart
     saveCarpartFromForm: saveCarpart,
     findCarparts: getAllCarparts,

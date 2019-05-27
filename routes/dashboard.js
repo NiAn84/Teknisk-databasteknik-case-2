@@ -23,6 +23,16 @@ router.get('/', rdl, function(req, res){
 
 });
 
+router.post('/updateUser', function(req, res){
+    var userid = req.session['userid'];
+    email = req.body['email'];
+    da.updateEmailOnUser(userid, email, function(err){
+    res.redirect('/dashboard');
+    });
+});
+
+
+
 
 
 module.exports = router;
