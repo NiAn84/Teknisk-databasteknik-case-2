@@ -28,13 +28,13 @@ block content
             br
             select.input_box(type="text", name="details.fits", id="details.fits", required="true")
                 each car in car_list
-                    option(value="") #{car.manufacturer} #{car.model} - #{car.details.year} - #{car.details.engine}
+                    option #{car.manufacturer} #{car.model} - #{car.details.year} - #{car.details.engine}
         label(for='details.inprice')
             span In Price
             br
             input.input_box(type='number', name='details.inprice', id='details.inprice', required='true', value='75')
         label(for='details.outprice')
-            span Out Price
+            span In Price
             br
             input.input_box(type='number', name='details.outprice', id='details.outprice', required='true', value='750')
 

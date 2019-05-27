@@ -38,5 +38,14 @@ router.get('/delete', function(req, res){
   });
 });
 
+router.post('/updateoutprice', function(req, res){
+  var partid = req.query.partid;
+  var outprice = req.body.outprice;
+  console.log(req.query.partid, req.body.outprice);
+  da.updateOutPrice(partid, outprice, function(err){
+    res.redirect('/carparts');
+  });
+});
+
 
 module.exports = router;

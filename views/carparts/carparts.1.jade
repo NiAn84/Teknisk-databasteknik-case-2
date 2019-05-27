@@ -9,9 +9,8 @@ block content
             th Manufacturer
             th Supplier
             th Fits Carmodel
-            th In Price
-            th Out Price
-            th Set Out price
+            th In price
+            th Out price
             th Delete
         if carpart_list && carpart_list.length > 0
             each carpart in carpart_list
@@ -23,14 +22,6 @@ block content
                     td #{carpart.details.fits}
                     td #{carpart.details.inprice}
                     td #{carpart.details.outprice}
-                    td.center
-                        form(action='/carparts/updateoutprice?partid=#{carpart.id}', method='post')
-                            label.input_box(for='outprice')
-                                span
-                                input(type='text', name='outprice', id='outprice', required='true' value='#{carpart.details.outprice}')
-                            label.input_box(for='submit')
-                                span
-                                input(type='submit', id='submit', value='Save')  
                     td.center
                         a(href="/carparts/delete?id=#{carpart.id}")
                             img.icon(src="/images/delete.png")

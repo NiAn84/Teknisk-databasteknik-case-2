@@ -128,6 +128,14 @@ function getAllCarparts(cb) {
     });
 }
 
+function updateOutPrice(partid, outprice, cb) {
+    connect2db();
+    console.log(partid, outprice);
+    Carpart.updateOne({'_id': partid}, {$set: {'details.outprice': outprice}}, function(err){ 
+    cb(err);
+});
+}
+
 // Car --------------------------------------------
 
 function saveCar(p, cb) {
@@ -187,6 +195,7 @@ module.exports = {
     findCarparts: getAllCarparts,
     searchpart: searchpart,
     deleteCarpart: deleteCarpart,
+    updateOutPrice: updateOutPrice,
     // Car
     saveCarFromForm: saveCar,
     findCars: getAllCars,
