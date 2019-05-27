@@ -11,11 +11,9 @@ const PersonSchema = new Schema({
     password: String,
     avatar: String,
     car: {
-        manufacturer: String,
-        model: String,
-        year: Number,
+        reg: String,
+        car: String,
         color: String,
-        engine: String
     }}, 
     { collection: 'persons' }
 );

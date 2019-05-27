@@ -1,5 +1,6 @@
 const Person = require('../models/person');
 const Carpart = require('../models/carpart');
+const Car = require('../models/car');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -15,6 +16,7 @@ function connect2db() {
     });
 }
 
+// Person --------------------------------------------
 function savePerson(p, cb) {
     connect2db();
     var p1 = new Person(p);
@@ -29,18 +31,6 @@ function savePerson(p, cb) {
     });
 }
 
-function saveCarpart(p, cb) {
-    connect2db();
-    var p1 = new Carpart(p);
-    p1.save(function(err){
-        if(err) {
-            console.log("Error creating Carpart" + err)
-        }
-        cb(err);
-        });
-}
-
-
 function search(pattern, cb) {
     connect2db();
     Person.find({$or: [
@@ -50,17 +40,6 @@ function search(pattern, cb) {
                       ]
     }, function(err, users){
         cb(err, users);
-    });
-}
-
-function searchpart(pattern, cb) {
-    connect2db();
-    Carpart.find({$or: [
-                        {name: {$regex: pattern }},
-                        {description:{$regex: pattern }}
-                      ]
-    }, function(err, carparts){
-        cb(err, carparts);
     });
 }
 
@@ -74,16 +53,6 @@ function deleteUser(id, cb) {
     });
 }
 
-function deleteCarpart(id, cb) {
-    connect2db();
-    Carpart.deleteOne({"_id": id}, function (err, res) {
-       if(err) {
-           console.log("Error deleting carpart" + err);
-       }
-       cb(err);
-    });
-}
-
 function getAllPersons(cb) {
     connect2db();
     Person.find(function(err, users) {
@@ -91,17 +60,6 @@ function getAllPersons(cb) {
             console.log('Error getting users' + err);
         }
         cb(err, users);
-    });
-}
-
-
-function getAllCarparts(cb) {
-    connect2db();
-    Carpart.find(function(err, carparts) {
-        if(err) {
-            console.log('Error getting carparts' + err);
-        }
-        cb(err, carparts);
     });
 }
 
@@ -118,16 +76,112 @@ function getUserById(userid, cb) {
         cb(err, user);
     });
 }
+// Carpart --------------------------------------------
+
+function saveCarpart(p, cb) {
+    connect2db();
+    var p1 = new Carpart(p);
+    p1.save(function(err){
+        if(err) {
+            console.log("Error creating Carpart" + err)
+        }
+        cb(err);
+        });
+}
+
+function searchpart(pattern, cb) {
+    connect2db();
+    Carpart.find({$or: [
+                        {name: {$regex: pattern }},
+                        {description:{$regex: pattern }}
+                      ]
+    }, function(err, carparts){
+        cb(err, carparts);
+    });
+}
+
+function deleteCarpart(id, cb) {
+    connect2db();
+    Carpart.deleteOne({"_id": id}, function (err, res) {
+       if(err) {
+           console.log("Error deleting carpart" + err);
+       }
+       cb(err);
+    });
+}
+
+function getAllCarparts(cb) {
+    connect2db();
+    Carpart.find(function(err, carparts) {
+        if(err) {
+            console.log('Error getting carparts' + err);
+        }
+        cb(err, carparts);
+    });
+}
+
+// Car --------------------------------------------
+
+function saveCar(p, cb) {
+    connect2db();
+    var p1 = new Car(p);
+    p1.save(function(err){
+        if(err) {
+            console.log("Error creating Carp" + err)
+        }
+        cb(err);
+        });
+}
+
+function searchcar(pattern, cb) {
+    connect2db();
+    Car.find({$or: [
+                        {name: {$regex: pattern }},
+                        {description:{$regex: pattern }}
+                      ]
+    }, function(err, cars){
+        cb(err, cars);
+    });
+}
+
+function deleteCar(id, cb) {
+    connect2db();
+    Car.deleteOne({"_id": id}, function (err, res) {
+       if(err) {
+           console.log("Error deleting car" + err);
+       }
+       cb(err);
+    });
+}
+
+function getAllCars(cb) {
+    connect2db();
+    Car.find(function(err, cars) {
+        if(err) {
+            console.log('Error getting cars' + err);
+        }
+        cb(err, cars);
+    });
+}
+
 
 module.exports = {
+    // Person
     savePersonFromForm: savePerson,
-    saveCarpartFromForm: saveCarpart,
     findPersons: getAllPersons,
-    findCarparts: getAllCarparts,
     search: search,
-    searchpart: searchpart,
     deleteUser: deleteUser,
-    deleteCarpart: deleteCarpart,
     getUserByUsername: getPersonByUsername,
-    getUserById: getUserById
+    getUserById: getUserById,
+    // Carpart
+    saveCarpartFromForm: saveCarpart,
+    findCarparts: getAllCarparts,
+    searchpart: searchpart,
+    deleteCarpart: deleteCarpart,
+    // Car
+    saveCarFromForm: saveCar,
+    findCars: getAllCars,
+    searchcar: searchcar,
+    deleteCar: deleteCar
+
 };

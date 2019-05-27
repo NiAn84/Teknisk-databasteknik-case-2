@@ -9,6 +9,8 @@ block content
             th Manufacturer
             th Supplier
             th Fits Carmodel
+            th In price
+            th Out price
             th Delete
         if carpart_list && carpart_list.length > 0
             each carpart in carpart_list
@@ -18,6 +20,8 @@ block content
                     td #{carpart.details.manufacturer}
                     td #{carpart.details.supplier}
                     td #{carpart.details.fits}
+                    td #{carpart.details.inprice}
+                    td #{carpart.details.outprice}
                     td.center
                         a(href="/carparts/delete?id=#{carpart.id}")
                             img.icon(src="/images/delete.png")

@@ -22,12 +22,14 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/add', function(req, res){
-  var userid = req.session['userid'];
-  const n = Math.floor(Math.random() * 100 + 1);
-  if(userid)
-    res.render('carparts/add', {title: 'Add Carpart', userid: userid});
-  else
-    res.render('lucky', {title: 'Lucky number', number: n});
+  da.findCars(function(err, cars){
+    var userid = req.session['userid'];
+    const n = Math.floor(Math.random() * 100 + 1);
+    if(userid)
+      res.render('carparts/add', {title: 'Add Carpart', car_list: cars, userid: userid});
+    else
+      res.render('lucky', {title: 'Lucky number', number: n});
+  });
 });
 
 router.get('/delete', function(req, res){

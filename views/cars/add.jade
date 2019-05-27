@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    h1 Add Car
+    form.user_input(action='/cars', method='post')
+        label(for='manufacturer')
+            span Manufacturer
+            br
+            select.dropdown_window(type="text", name="manufacturer", id="manufacturer", required="true")
+                option UAZ
+                option Moskvich Logo
+                option Volga
+                option Spetsteh
+        label(for='model')
+            span Model
+            input(type='text', name='model', id='model', required='true')
+        label(for='details.year')
+            span Year
+            br
+            input(type='number', name='details.year', id='details.year', required='true', value='1975')
+        label(for='details.engine')
+            span Manufacturer
+            br
+            select.dropdown_window(type="text", name="details.engine", id="details.engine", required="true")
+                option Gasoline
+                option Diesel
+                option Electric
+                option Jet Fuel
+
+        label.control-label(for='submit')
+            span
+            input(type='submit', id='submit', value='Save')

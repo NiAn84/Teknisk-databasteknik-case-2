@@ -18,27 +18,15 @@ block content
         label(for='password')
             span Password
             input(type='password', name='password', id='password', required='true')
-        label(for='car.manufacturer')
-            span Car Manufacturer
+        label(for='car.reg')
+            span Car Reg.Nr
+            input(type='text', name='car.reg', id='car.reg', required='true')
+        label(for="car.car")
+            span Car Model
             br
-            select.dropdown_window(type="text", name="car.manufacturer", id="car.manufacturer", required="true")
-                option UAZ
-                option Moskvich Logo
-                option Volga
-        label(for='car.model')
-            span Model
-            br
-            select.dropdown_window(type="text", name="car.model", id="car.model", required="true")
-                option One
-                option Two
-                option Three
-        label(for='car.year')
-            span Year
-            br
-            select.dropdown_window(type="number", name="car.year", id="car.year", required="true")
-                option 2004
-                option 2005
-                option 2006
+            select.dropdown_window(type="text", name="car.car", id="car.car", required="true")
+                each car in car_list
+                    option #{car.manufacturer} #{car.model} - #{car.details.year} - #{car.details.engine}
         label(for='car.color')
             span Color
             br
@@ -49,14 +37,6 @@ block content
                 option Purple
                 option Brown
                 option Grey
-        label(for='car.engine')
-            span Engine
-            br
-            select.dropdown_window(type="text", name="car.engine", id="car.engine", required="true")
-                option Gasoline
-                option Diesel
-                option Electric
-                option Jet Fuel
         
         label(for='avatar')
             span(id='avatar') Avatar

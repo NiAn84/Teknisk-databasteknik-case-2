@@ -22,8 +22,10 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/add', function(req, res){
-  var userid = req.session['userid'];
-  res.render('users/add', {title: 'New Customer', userid: userid});
+  da.findCars(function(err, cars){
+    var userid = req.session['userid'];
+    res.render('users/add', {title: 'New Customer', car_list: cars, userid: userid});
+  });
 });
 
 router.get('/delete', function(req, res){

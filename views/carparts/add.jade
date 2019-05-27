@@ -23,13 +23,20 @@ block content
                 option Nikita
                 option Alexey
                 option Vladimir
-        label(for='details.fits')
-            span Fits carmodel
+        label(for="details.fits")
+            span Fits Car Model
             br
             select.dropdown_window(type="text", name="details.fits", id="details.fits", required="true")
-                option One
-                option Two
-                option Three
+                each car in car_list
+                    option #{car.manufacturer} #{car.model} - #{car.details.year} - #{car.details.engine}
+        label(for='details.inprice')
+            span In Price
+            br
+            input(type='number', name='details.inprice', id='details.inprice', required='true', value='75')
+        label(for='details.outprice')
+            span In Price
+            br
+            input(type='number', name='details.outprice', id='details.outprice', required='true', value='750')
 
         label.control-label(for='submit')
             span

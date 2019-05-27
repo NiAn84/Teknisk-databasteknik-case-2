@@ -8,8 +8,8 @@ block content
             th Last Name
             th Email
             th Username
-            th Car
-            th Car details (Year, Color, Engine)
+            th Car Reg.Nr
+            th Car Details
             th Delete
         if user_list && user_list.length > 0
             each user in user_list
@@ -18,8 +18,8 @@ block content
                     td #{user.last_name}
                     td #{user.email}
                     td #{user.username}
-                    td #{user.car.manufacturer} - #{user.car.model}
-                    td #{user.car.year}, #{user.car.color}, #{user.car.engine}
+                    td #{user.car.reg}
+                    td #{user.car.car} - #{user.car.color}
                     td.center
                         if(userid !== user.id)
                             a(href="/users/delete?id=#{user.id}")

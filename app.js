@@ -10,7 +10,8 @@ const favicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const carpartsRouter = require('./routes/carparts')
+const carpartsRouter = require('./routes/carparts');
+const carsRouter = require('./routes/cars');
 const luckyRouter = require('./routes/lucky');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
@@ -58,6 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/carparts', carpartsRouter);
+app.use('/cars', carsRouter);
 app.use('/lucky', luckyRouter);
 app.use('/search', searchRouter);
 app.use('/login', loginRouter);

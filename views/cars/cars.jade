@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    h1= title
+    table.user_table
+        tr
+            th Manufacturer
+            th Model
+            th Year
+            th Engine
+            th Delete
+        if car_list && car_list.length > 0
+            each car in car_list
+                tr
+                    td #{car.manufacturer}
+                    td #{car.model}
+                    td #{car.details.year}
+                    td #{car.details.engine}
+                    td.center
+                        a(href="/cars/delete?id=#{car.id}")
+                            img.icon(src="/images/delete.png")
+        else
+            tr
+                td(colspan=6) No records
