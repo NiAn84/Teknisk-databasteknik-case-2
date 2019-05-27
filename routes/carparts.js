@@ -38,11 +38,22 @@ router.get('/delete', function(req, res){
   });
 });
 
+router.post('/updateinprice', function(req, res){
+  var partid = req.query.partid;
+  var price = req.body.price;
+  console.log(req.query.partid, req.body.price, "---1");
+  console.log(partid, price, "---2");
+  da.updateInPrice(partid, price, function(err){
+    res.redirect('/carparts');
+  });
+});
+
 router.post('/updateoutprice', function(req, res){
   var partid = req.query.partid;
-  var outprice = req.body.outprice;
-  console.log(req.query.partid, req.body.outprice);
-  da.updateOutPrice(partid, outprice, function(err){
+  var price = req.body.price;
+  console.log(req.query.partid, req.body.price, "---1");
+  console.log(partid, price, "---2");
+  da.updateOutPrice(partid, price, function(err){
     res.redirect('/carparts');
   });
 });

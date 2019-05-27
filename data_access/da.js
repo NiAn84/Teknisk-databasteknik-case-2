@@ -128,10 +128,18 @@ function getAllCarparts(cb) {
     });
 }
 
-function updateOutPrice(partid, outprice, cb) {
+function updateInPrice(partid, price, cb) {
     connect2db();
-    console.log(partid, outprice);
-    Carpart.updateOne({'_id': partid}, {$set: {'details.outprice': outprice}}, function(err){ 
+    console.log(partid, price, "---3");
+    Carpart.updateOne({'_id': partid}, {$set: {'details.inprice': price}}, function(err){ 
+    cb(err);
+});
+}
+
+function updateOutPrice(partid, price, cb) {
+    connect2db();
+    console.log(partid, price, "---3");
+    Carpart.updateOne({'_id': partid}, {$set: {'details.outprice': price}}, function(err){ 
     cb(err);
 });
 }
@@ -195,6 +203,7 @@ module.exports = {
     findCarparts: getAllCarparts,
     searchpart: searchpart,
     deleteCarpart: deleteCarpart,
+    updateInPrice: updateInPrice,
     updateOutPrice: updateOutPrice,
     // Car
     saveCarFromForm: saveCar,
