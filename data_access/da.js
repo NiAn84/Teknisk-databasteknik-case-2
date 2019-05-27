@@ -45,7 +45,8 @@ function search(pattern, cb) {
     connect2db();
     Person.find({$or: [
                         {first_name: {$regex: pattern }},
-                        {last_name:{$regex: pattern }}
+                        {last_name:{$regex: pattern }},
+                        {username: {$regex: pattern }}
                       ]
     }, function(err, users){
         cb(err, users);

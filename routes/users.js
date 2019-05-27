@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   da.savePersonFromForm(req.body, function(err) {
-    res.redirect('/users');
+    res.redirect('/login');
   });
 });
 
@@ -29,6 +29,12 @@ router.get('/add', function(req, res){
 router.get('/delete', function(req, res){
   da.deleteUser(req.query.id, function(err){
     res.redirect('/users');
+  });
+});
+
+router.get('/deleteself', function(req, res){
+  da.deleteUser(req.query.id, function(err){
+    res.redirect('/logout');
   });
 });
 

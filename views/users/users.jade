@@ -21,8 +21,12 @@ block content
                     td #{user.car.manufacturer} - #{user.car.model}
                     td #{user.car.year}, #{user.car.color}, #{user.car.engine}
                     td.center
-                        a(href="/users/delete?id=#{user.id}")
-                            img.icon(src="/images/delete.png")
+                        if(userid !== user.id)
+                            a(href="/users/delete?id=#{user.id}")
+                                img.icon(src="/images/delete.png")
+                        else
+                            a(href="/users/deleteself?id=#{user.id}")
+                                img.icon(src="/images/deleteself.png")
         else
             tr
                 td(colspan=6) No records
