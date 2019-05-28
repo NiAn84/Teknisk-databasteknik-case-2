@@ -129,18 +129,18 @@ function getAllCarparts(cb) {
 }
 
 // Update In or Out Price on parts
-function updateInPrice(partid, price, cb) {
+function updateInPrice(partid, inprice, cb) {
     connect2db();
-    console.log(partid, price, "---3");
-    Carpart.updateOne({'_id': partid}, {$set: {'details.inprice': price}}, function(err){ 
+    console.log(partid, inprice, "---3");
+    Carpart.updateOne({'_id': partid}, {$set: {'details.inprice': inprice}}, function(err){ 
     cb(err);
 });
 }
 
-function updateOutPrice(partid, price, cb) {
+function updateOutPrice(partid, outprice, cb) {
     connect2db();
-    console.log(partid, price, "---3");
-    Carpart.updateOne({'_id': partid}, {$set: {'details.outprice': price}}, function(err){ 
+    console.log(partid, outprice, "---3");
+    Carpart.updateOne({'_id': partid}, {$set: {'details.outprice': outprice}}, function(err){ 
     cb(err);
 });
 }

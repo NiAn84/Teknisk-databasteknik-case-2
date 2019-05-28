@@ -25,14 +25,12 @@ block content
                     td #{carpart.details.outprice}
                     td.center
                         form(action='/carparts/updateprice?partid=#{carpart.id}', method='post')
-                            label(for='inout')
+                            label.input_box(for='inprice')
                                 span
-                                select.input_box(type="number", name="inout", id="inout", required="true")
-                                    option(value=1) In Price
-                                    option(value=5) Out Price
-                            label.input_box(for='price')
+                                input(type='number', name='inprice', id='inprice', required='true', value="#{carpart.details.inprice}")
+                            label.input_box(for='outprice')
                                 span
-                                input(type='number', name='price', id='price', required='true')
+                                input(type='number', name='outprice', id='outprice', required='true', value="#{carpart.details.outprice}")
                             label.input_box(for='submit')
                                 span
                                 input(type='submit', id='submit', value='Save')  

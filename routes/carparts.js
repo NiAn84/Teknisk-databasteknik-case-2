@@ -38,21 +38,18 @@ router.get('/delete', function(req, res){
   });
 });
 
-
+/* Update In or Out Price on parts */
 router.post('/updateprice', function(req, res){
   var partid = req.query.partid;
-  var inout = req.body.inout;
-  var price = req.body.price;
-  console.log(req.query.partid, req.body.inout, req.body.price, "---1");
-  console.log(partid, inout, price, "---2");
-  if(inout < 3)
-    da.updateInPrice(partid, price, function(err){
-      res.redirect('/carparts');
-    });
-  else
-    da.updateOutPrice(partid, price, function(err){
-      res.redirect('/carparts');
-    });
+  var inprice = req.body.inprice;
+  var outprice = req.body.outprice;
+  console.log(req.query.partid, req.body.inprice, req.body.outprice, "---1");
+  console.log(partid, inprice, outprice, "---2");
+  da.updateInPrice(partid, inprice, function(err){
+  });
+  da.updateOutPrice(partid, outprice, function(err){
+    res.redirect('/carparts');
+  });
 });
 
 
