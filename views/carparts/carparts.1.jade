@@ -28,3 +28,52 @@ block content
         else
             tr
                 td(colspan=6) No records
+
+
+
+
+
+extends ../layout
+
+block content
+    h1= title
+    table.user_table
+        tr
+            th Name
+            th Description
+            th Manufacturer
+            th Supplier
+            th Fits Carmodel
+            th In Price
+            th Out Price
+            th Delete
+        if carpart_list && carpart_list.length > 0
+            each carpart in carpart_list
+                tr
+                    td #{carpart.name}
+                    td #{carpart.description}
+                    td #{carpart.details.manufacturer}
+                    td #{carpart.details.supplier}
+                    td #{carpart.details.fits}
+                    td.center
+                        form(action='/carparts/updateinprice?partid=#{carpart.id}', method='post')
+                            label.input_box(for='price')
+                                span
+                                input(type='number', name='price', id='price', required='true', value='#{carpart.details.inprice}')
+                            label.input_box(for='submit')
+                                span
+                                input(type='submit', id='submit', value='Save')
+                    td.center
+                        form(action='/carparts/updateoutprice?partid=#{carpart.id}', method='post')
+                            label.input_box(for='price')
+                                span
+                                input(type='number', name='price', id='price', required='true', value='#{carpart.details.outprice}')
+                            label.input_box(for='submit')
+                                span
+                                input(type='submit', id='submit', value='Save')  
+                    td.center
+                        a(href="/carparts/delete?id=#{carpart.id}")
+                            img.icon(src="/images/delete.png")
+        else
+            tr
+                td(colspan=8) No records

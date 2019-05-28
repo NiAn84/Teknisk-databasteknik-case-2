@@ -128,6 +128,7 @@ function getAllCarparts(cb) {
     });
 }
 
+// Update In or Out Price on parts
 function updateInPrice(partid, price, cb) {
     connect2db();
     console.log(partid, price, "---3");

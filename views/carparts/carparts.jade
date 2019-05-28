@@ -11,6 +11,7 @@ block content
             th Fits Carmodel
             th In Price
             th Out Price
+            th Update Price
             th Delete
         if carpart_list && carpart_list.length > 0
             each carpart in carpart_list
@@ -20,19 +21,18 @@ block content
                     td #{carpart.details.manufacturer}
                     td #{carpart.details.supplier}
                     td #{carpart.details.fits}
+                    td #{carpart.details.inprice}
+                    td #{carpart.details.outprice}
                     td.center
-                        form(action='/carparts/updateinprice?partid=#{carpart.id}', method='post')
+                        form(action='/carparts/updateprice?partid=#{carpart.id}', method='post')
+                            label(for='inout')
+                                span
+                                select.input_box(type="number", name="inout", id="inout", required="true")
+                                    option(value=1) In Price
+                                    option(value=5) Out Price
                             label.input_box(for='price')
                                 span
-                                input(type='number', name='price', id='price', required='true', value='#{carpart.details.inprice}')
-                            label.input_box(for='submit')
-                                span
-                                input(type='submit', id='submit', value='Save')
-                    td.center
-                        form(action='/carparts/updateoutprice?partid=#{carpart.id}', method='post')
-                            label.input_box(for='price')
-                                span
-                                input(type='number', name='price', id='price', required='true', value='#{carpart.details.outprice}')
+                                input(type='number', name='price', id='price', required='true')
                             label.input_box(for='submit')
                                 span
                                 input(type='submit', id='submit', value='Save')  
@@ -41,4 +41,4 @@ block content
                             img.icon(src="/images/delete.png")
         else
             tr
-                td(colspan=8) No records
+                td(colspan=9) No records
