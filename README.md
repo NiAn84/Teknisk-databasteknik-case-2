@@ -4,9 +4,10 @@ Niklas Andersson
 Case 2
 
 Functions
--Add Customer function that creats login
+- Add Customer function that creats login
 - Add Cars and Carparts
+- Delete Customers (red trashcan on inlogged customer), Cars and Carparts
 - Read from 3 different collections
 - Search in Customers and Carparts
-- Change email address on logged in customer
-- Change In and Out Price on Carparts
+- Edit email address on logged in customer from Dashboard
+- Edit In and Out Price on Carparts
