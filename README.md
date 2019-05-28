@@ -4,7 +4,7 @@ Niklas Andersson
 Case 2
 
 Functions
-- Add Customer function that creats login
+- Add Customer function that creates login
 - Add Cars and Carparts
 - Delete Customers (red trashcan on inlogged customer), Cars and Carparts
 - Read from 3 different collections
