@@ -11,4 +11,4 @@ Functions
 - Search in Customers and Carparts
 - Edit email address on logged in customer from Dashboard
 - Edit In and Out Price on Carparts
-- Easter egg
+- Easter egg (easy to spot in code, harder in use)
